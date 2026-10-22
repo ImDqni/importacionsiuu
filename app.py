@@ -10,8 +10,31 @@ from datetime import date, timedelta
 from html import escape
 
 import pandas as pd
-import streamlit as st
-
+import streamlit as 
+# CSS Ultra-Limpio: Elimina totalmente la marca de agua, cabeceras y footers de Streamlit
+hide_streamlit_style = """
+    <style>
+    /* Ocultar barra superior, menú de hamburguesa y botón Deploy */
+    #MainMenu {visibility: hidden !important;}
+    header {visibility: hidden !important;}
+    footer {visibility: hidden !important;}
+    [data-testid="stHeader"] {display: none !important;}
+    [data-testid="stToolbar"] {display: none !important;}
+    .stAppDeployButton {display: none !important;}
+    div[data-testid="stDecoration"] {display: none !important;}
+    
+    /* Eliminar el margen/espacio blanco superior que deja la barra al ocultarse */
+    .block-container {
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+    }
+    
+    /* Ocultar marca de agua en el pie de página */
+    #stDecoration {display: none !important;}
+    footer:after {content: "";}
+    </style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 DB_PATH = os.getenv("DB_PATH", "data/inventario.db")
 ESTADOS = ["En Origen", "En Tránsito", "Listo", "Entregado"]
 EN_CAMINO = ["En Origen", "En Tránsito"]
