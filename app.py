@@ -10,7 +10,9 @@ from datetime import date, timedelta
 from html import escape
 
 import pandas as pd
-import streamlit as 
+import pandas as pd
+import streamlit as st
+
 # CSS Ultra-Limpio: Elimina totalmente la marca de agua, cabeceras y footers de Streamlit
 hide_streamlit_style = """
     <style>
@@ -35,6 +37,7 @@ hide_streamlit_style = """
     </style>
 """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 DB_PATH = os.getenv("DB_PATH", "data/inventario.db")
 ESTADOS = ["En Origen", "En Tránsito", "Listo", "Entregado"]
 EN_CAMINO = ["En Origen", "En Tránsito"]
